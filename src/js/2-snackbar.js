@@ -4,27 +4,26 @@ import 'izitoast/dist/css/iziToast.min.css';
 // import iconSuccess from '../img/success.svg';
 // import iconError from '../img/error.svg';
 
-const formElement = document.querySelector('form');
+const formElement = document.querySelector('.form');
 
-formElement.addEventListener('submit', onCreateNotification);
+formElement.addEventListener('submit', onGetNotify);
 
-function onCreateNotification(event) {
+function onGetNotify(event) {
   event.preventDefault();
-  const receivedTime = event.target.elements.delay.value;
+  const getTime = event.target.elements.delay.value;
+  const getRadio = event.target.elements.state.value;
 
-  const radioSelection = event.target.elements.state.value;
-
-  const notification = new Promise((resolve, reject) => {
+  const popupShow = new Promise((resolve, reject) => {
     setTimeout(() => {
-      if (radioSelection === 'fulfilled') {
-        return resolve(receivedTime);
+      if (getRadio === 'fulfilled') {
+        return resolve(getTime);
       }
-      if (radioSelection === 'rejected') {
-        return reject(receivedTime);
+      else {
+        return reject(getTime);
       }
-    }, receivedTime);
+    }, getTime);
   });
-  notification
+  popupShow
     .then(() => {
       iziToast.success({
         // iconUrl: iconSuccess,
@@ -33,8 +32,8 @@ function onCreateNotification(event) {
         messageColor: '#fff',
         backgroundColor: '#59a10d',
         position: 'topRight',
-        message: `Fulfilled promise in ${receivedTime}ms`,
-        timeout: `${receivedTime}`,
+        message: `Fulfilled promise in ${getTime}ms`,
+        timeout: 2000,
       });
     })
     .catch(() => {
@@ -45,8 +44,8 @@ function onCreateNotification(event) {
         messageColor: '#fff',
         backgroundColor: '#ef4040',
         position: 'topRight',
-        message: `Rejected promise in ${receivedTime}ms`,
-        timeout: `${receivedTime}`,
+        message: `Rejected promise in ${getTime}ms`,
+        timeout: 2000,
       });
     });
   event.target.reset();

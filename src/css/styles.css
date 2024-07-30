@@ -160,15 +160,8 @@ a:hover {
 
   /* Snackbar Styles */
 
-  .form {
-    display: flex;
-    flex-direction: column;
+  .sbsection {  
     width: 360px;
-    
-  }
-  label {
-  background-color: red;
-
   }
 
 

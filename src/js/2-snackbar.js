@@ -1,8 +1,8 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
-// import iconSuccess from '../img/success.svg';
-// import iconError from '../img/error.svg';
+import iconSuccess from '../img/ok.svg';
+import iconError from '../img/nok.svg';
 
 const formElement = document.querySelector('.form');
 
@@ -26,7 +26,7 @@ function onGetNotify(event) {
   popupShow
     .then(() => {
       iziToast.success({
-        // iconUrl: iconSuccess,
+        iconUrl: iconSuccess,
         title: 'OK',
         titleColor: '#fff',
         messageColor: '#fff',
@@ -38,7 +38,7 @@ function onGetNotify(event) {
     })
     .catch(() => {
       iziToast.error({
-        // iconUrl: iconError,
+        iconUrl: iconError,
         title: 'Error',
         titleColor: '#fff',
         messageColor: '#fff',

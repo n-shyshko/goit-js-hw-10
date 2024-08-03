@@ -3,6 +3,8 @@ import "flatpickr/dist/flatpickr.min.css";
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
 
+import iconError from '../img/nok.svg';
+
 const startBtn = document.querySelector("button[data-start]");
 startBtn.disabled = true;
 const timePicker = document.querySelector("input#datetime-picker");
@@ -25,6 +27,7 @@ const options = {
     } else {
       startBtn.disabled = true;
       iziToast.error({
+        iconUrl: iconError,
         title: 'Error',
         titleColor: '#fff',
         messageColor: '#fff',
